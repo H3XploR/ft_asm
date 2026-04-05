@@ -1,15 +1,10 @@
 define function_handle_procedure
 	$(eval name_dir = $(1:%=%_dir))
 	mkdir -p $(name_dir)
+	$(eval name_obj = $(1:%=%.o))
+	echo $(name_obj)
+	mv $(name_obj) name_dir || true 
 endef 
-
-define mv_file
-
-endef
-
-define create_directory
-
-endef
 
 define loop
 	$(foreach var, $(list_function_name), $(call function_handle_procedure, $(var)))
