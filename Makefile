@@ -1,9 +1,15 @@
 define function_handle_procedure
 	$(eval name_dir = $(1:%=%_dir))
 	mkdir -p $(name_dir)
+
 	$(eval name_obj = $(1:%=%.o))
 	echo $(name_obj)
-	mv $(name_obj) name_dir || true 
+	mv $(name_obj) $(name_dir) || true 
+
+	$(eval name_src = $(1:%=%.s))
+	echo $(name_src)
+	mv $(name_src) $(name_dir) || true 
+
 endef 
 
 define loop
