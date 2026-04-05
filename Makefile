@@ -1,15 +1,14 @@
 define function_handle_procedure
 	$(eval name_dir = $(1:%=%_dir))
-	mkdir -p $(name_dir)
+	@mkdir -p $(name_dir)
 
 	$(eval name_obj = $(1:%=%.o))
-	echo $(name_obj)
-	mv $(name_obj) $(name_dir) || true 
+	@echo $(name_obj)
+	@mv $(name_obj) $(name_dir) || true 
 
 	$(eval name_src = $(1:%=%.s))
-	echo $(name_src)
-	mv $(name_src) $(name_dir) || true 
-
+	@echo $(name_src)
+	@mv $(name_src) $(name_dir) || true 
 endef 
 
 define loop
@@ -22,7 +21,7 @@ list_function_source = $(list_function_name=:.s)
 
 list_function_obj = $(list_function_name=:.o)
 
-FT_STRLEN = ft_strlen
+TEST = ft_strlen
 
 $(FT_STRLEN): main.o ft_strlen.o
 	gcc main.o ft_strlen.o -o $(FT_STRLEN)
@@ -32,7 +31,6 @@ main.o: main.c
 
 ft_strlen.o: ft_strlen.s
 	nasm -f elf64 ft_strlen.s -o ft_strlen.o
-
 
 all:
 	$(call loop)
