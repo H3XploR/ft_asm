@@ -2,9 +2,13 @@ list_function_name = ft_strlen ft_strcpy ft_strcmp ft_write ft_read ft_strdup ft
 list_function_dir = $(list_function_name:%=%_dir)
 
 all:
-	@$(foreach var, $(list_function_dir), make -C $(var) || true)
+	@$(foreach var, $(list_function_dir), make -C $(var) $@ || true)
 run:
+	@$(foreach var, $(list_function_dir), make -C $(var) $@ || true)
 clean:
-fclean: clean
+	@$(foreach var, $(list_function_dir), make -C $(var) $@ || true)
+fclean:
+	@$(foreach var, $(list_function_dir), make -C $(var) $@ || true)
 
-re: fclean all
+re:
+	@$(foreach var, $(list_function_dir), make -C $(var) $@ || true)
