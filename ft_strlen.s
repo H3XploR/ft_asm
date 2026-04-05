@@ -6,5 +6,11 @@ section .text		; start of code segment
 	global ft_strlen; declare _start to be visible in the generated object file
 
 ft_strlen:
-	
+	xor	rax, rax ; initialiser le compteur a 0
+.loop:
+	cmp	byte [rdi + rax], 0; comparer
+	jz	.end
+	inc	rax
+	jmp	.loop
+.end:
 	ret

@@ -1,7 +1,26 @@
-NAME = ft_strlen_test
+define mv_file
 
-$(NAME): main.o ft_strlen.o
-	gcc main.o ft_strlen.o -o $(NAME)
+endef
+
+define create_directory
+
+endef
+
+define loop
+	$(foreach var, list_function_name)
+	$(call $(1), $(2))
+endef
+
+list_function_name = ft_strlen ft_strcpy ft_strcmp ft_write ft_read ft_strdup ft_atoi_base ft_list_push_front ft_list_size ft_list_sort ft_list_remove_if
+
+list_function_source = $(list_function_name=:.s)
+
+list_function_obj = $(list_function_name=:.o)
+
+FT_STRLEN = ft_strlen
+
+$(FT_STRLEN): main.o ft_strlen.o
+	gcc main.o ft_strlen.o -o $(FT_STRLEN)
 
 main.o: main.c
 	gcc main.c -c 
@@ -10,8 +29,8 @@ ft_strlen.o: ft_strlen.s
 	nasm -f elf64 ft_strlen.s -o ft_strlen.o
 
 run:
-	./ft_strlen_test
+	$(FT_STRLEN)
 clean:
 	rm ft_strlen.o main.o
 fclean: clean
-	rm $(NAME)
+	rm $(FT_STRLEN)
