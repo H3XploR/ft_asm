@@ -1,3 +1,8 @@
+define function_handle_procedure
+	@echo "$(1)"
+
+endef 
+
 define mv_file
 
 endef
@@ -7,8 +12,7 @@ define create_directory
 endef
 
 define loop
-	$(foreach var, list_function_name)
-	$(call $(1), $(2))
+	$(foreach var, $(list_function_name), $(call function_handle_procedure, $(var)))
 endef
 
 list_function_name = ft_strlen ft_strcpy ft_strcmp ft_write ft_read ft_strdup ft_atoi_base ft_list_push_front ft_list_size ft_list_sort ft_list_remove_if
@@ -28,6 +32,9 @@ main.o: main.c
 ft_strlen.o: ft_strlen.s
 	nasm -f elf64 ft_strlen.s -o ft_strlen.o
 
+
+all:
+	$(call loop)
 run:
 	$(FT_STRLEN)
 clean:
