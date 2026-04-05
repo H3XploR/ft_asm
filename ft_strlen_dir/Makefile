@@ -1,4 +1,4 @@
-NAME = ft_strlen
+NAME = test_ft_strlen
 
 $(NAME): test.o ft_strlen.o
 	gcc test.o ft_strlen.o -o $(NAME)
@@ -17,3 +17,5 @@ clean:
 	rm ft_strlen.o test.o
 fclean: clean
 	rm $(NAME)
+
+re: fclean all
