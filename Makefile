@@ -1,6 +1,6 @@
 define function_handle_procedure
-	@echo "$(1)"
-
+	$(eval name_dir = $(1:%=%_dir))
+	mkdir -p $(name_dir)
 endef 
 
 define mv_file
