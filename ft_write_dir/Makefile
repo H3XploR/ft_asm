@@ -12,7 +12,7 @@ ft_write.o: ft_write.s
 all: $(NAME)
 
 run:
-	$(NAME)
+	./$(NAME)
 clean:
 	rm ft_write.o test.o
 fclean: clean
