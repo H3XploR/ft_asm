@@ -19,5 +19,5 @@ diff:
 	mov	rax, r8
 	ret
 ok:
-	mov rax, 0
+	xor rax, rax
 	ret
