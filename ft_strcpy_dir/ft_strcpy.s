@@ -15,5 +15,5 @@ loop:
 	jmp	loop
 end:
 	mov	byte [rdi + rcx], 0
-	mov	rax, [rdi]
+	lea	rax, [rdi]
 	ret
