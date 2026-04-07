@@ -15,6 +15,7 @@ ft_write:
 	call	__errno_location WRT ..plt
 	neg	r8
 	mov	[rax], r8
+	mov	rax, -1
 	ret
 end:
 	ret
