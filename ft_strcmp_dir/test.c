@@ -11,5 +11,7 @@ int main(void) {
 
     int ret = ft_strcmp(ch1, ch2);
     printf("ret = %d\n", ret);
+    ret = ft_strcmp(ch1, ch1);
+    printf("ret = %d\n", ret);
     return 0;
 } 

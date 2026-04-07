@@ -9,11 +9,15 @@ loop:
 	mov	r8b, [rdi+rcx]
 	mov	r9b, [rsi+rcx]
 	cmp	r8b, r9b
-	jne	end	
+	jz	ok
+	jne	diff
 	inc	rcx
 	jmp	loop
 
-end:
+diff:
 	sub	r8b, r9b	
 	mov	rax, r8
+	ret
+ok:
+	mov rax, 0
 	ret
