@@ -53,3 +53,10 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# executable
+ft_read_dir/test_ft_read
+ft_strcmp_dir/test_ft_strcmp
+ft_strcpy_dir/test_ft_strcpy
+ft_strdup_dir/test_ft_strdup
+ft_write_dir/test_ft_write
