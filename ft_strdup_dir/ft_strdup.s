@@ -8,20 +8,20 @@ extern  ft_strlen
 global ft_strdup
 
 ft_strdup:
+	push	rdi
 	call	ft_strlen
-	push	rax
 	mov	rdi, rax
 	inc	rdi
 	call	malloc	WRT ..plt
-	mov	ecx, 0
+	mov	rcx, 0
 	pop	r9
 loop:
-	mov	r10, [r9b + ecx]
-	cmp	r10, 0
+	mov	r10b, [r9 + rcx]
+	cmp	r10b, 0
 	je	end
-	mov	[rax + ecx], r10
-	inc	ecx
+	mov	[rax + rcx], r10
+	inc	rcx
 	jmp	loop
 end:
-	mov	[rax + ecx], 0
+	mov	byte [rax + rcx], 0
 	ret

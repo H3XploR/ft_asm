@@ -21,11 +21,11 @@ run:
 
 clean:
 	rm ft_strdup.o test.o
-	make -c $(dir $(DEPENDANCE)) @$ || true
+	make -C $(dir $(DEPENDANCE)) clean || true
 
 fclean: clean
 	rm $(NAME)
-	make -c $(dir $(DEPENDANCE)) @$ || true
+	make -C $(dir $(DEPENDANCE)) fclean || true
 
 re: fclean all
-	make -c $(dir $(DEPENDANCE)) @$ || true
+	make -C $(dir $(DEPENDANCE)) re || true
