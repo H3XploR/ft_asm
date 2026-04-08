@@ -12,7 +12,7 @@ ft_strlen.o: ft_strlen.s
 all: $(NAME)
 
 run:
-	$(NAME)
+	./$(NAME)
 clean:
 	rm ft_strlen.o test.o
 fclean: clean

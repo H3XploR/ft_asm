@@ -16,7 +16,7 @@ $(DEPENDANCE):
 all: $(NAME)
 
 run:
-	$(NAME)
+	./$(NAME)
 clean:
 	rm ft_atoi_base.o test.o
 fclean: clean
