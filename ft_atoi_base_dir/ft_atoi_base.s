@@ -22,8 +22,10 @@ ft_atoi_base:
 	mov	rcx, rax	;rcx = longueur numero
 	dec	rcx		;rcx = (longueur numero) - 1
 	xor	r11, r11	;clean r11 = 0
+	mov	r13, 1		;pow = 0
 	mov	byte r11b, [rdi + rcx] ;r11b = *(arg1 + rcx)
-	mov	r12, 0		;index = 0
+loop:
+	mov	r12, 0		;index_base = 0
 loop_base_search:
 	cmp	r12, r10
 	jg	fin_chaine_base
@@ -39,4 +41,9 @@ fin_chaine_base:
 	mov rax, 0
 	ret
 char_trouve:
-	mov rax, r12
+	imul	r12, r13	;index * pow
+	imul	r13, 10		;pow * 10
+	add	r14, r12	;resultat final a renvoyer
+	inc	r12
+	dec	rcx		;index_nb - 1
+	jmp	loop
