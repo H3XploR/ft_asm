@@ -13,6 +13,7 @@ ft_atoi_base:
 	call	ft_strlen
 	mov	r10, rax	;r10 = longueur chaine base
 	cmp	r10, 0		;if (r10 == 0) goto erreur_chaine_vide
+	dec	r10		;r10 = (longueur chaine base) - 1
 	jz	erreur_chaine_vide
 	pop	rsi
 	pop	rdi
@@ -23,7 +24,7 @@ ft_atoi_base:
 	dec	rcx		;rcx = (longueur numero) - 1
 	xor	r14, r14	;init result final a 0
 	xor	r11, r11	;clean r11 = 0
-	mov	r13, 1		;pow = 0
+	mov	r13, 1		;pow = 1
 loop:
 	cmp	rcx, 0
 	jl	end
@@ -39,9 +40,13 @@ loop_base_search:
 	ret
 erreur_chaine_vide:
 	mov	rax, 0
+	pop	r14
+	pop	r14
 	ret
 fin_chaine_base:
 	mov rax, 0
+	pop	r14
+	pop	r14
 	ret
 char_trouve:
 	imul	r12, r13	;index * pow
