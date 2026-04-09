@@ -25,5 +25,28 @@ int	main(void){
 
 	printf("test avec une valeur negative\n");
 	numb = ft_atoi_base("-8", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec une valeur negative entre 100 et 1000\n");
+	numb = ft_atoi_base("-889", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec plusieurs moins devant\n");
+	numb = ft_atoi_base("--889", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec un moins au milieu du numero\n");
+	numb = ft_atoi_base("8-89", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec un moins au milieu du numero\n");
+	numb = ft_atoi_base("88-9", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec un moins a la fin du numero\n");
+	numb = ft_atoi_base("889-", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec juste un moins\n");
+	numb = ft_atoi_base("-", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec plusieurs moins\n");
+	numb = ft_atoi_base("--", "0123456789"); printf("numb = %d\n\n", numb);
+	numb = ft_atoi_base("---", "0123456789"); printf("numb = %d\n\n", numb);
+	numb = ft_atoi_base("----", "0123456789"); printf("numb = %d\n\n", numb);
 	return 0;
 }
