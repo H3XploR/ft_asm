@@ -89,10 +89,10 @@ int	main(void){
 
 	printf("boucle negative\n");
 	char neg_cnb[3];
-	neg_cnb[4] = 0;
+	neg_cnb[2] = 0;
 	memset(neg_cnb, '0', 2);
 	neg_cnb[0] = '-';
-	while (neg_cnb[1] <= 9){
+	while (neg_cnb[1] <= '9'){
 		numb = ft_atoi_base(neg_cnb, base_10); printf("numb = %d\n", numb);
 		neg_cnb[1]++;
 	}
