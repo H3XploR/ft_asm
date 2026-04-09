@@ -17,6 +17,10 @@ all: $(NAME)
 
 run:
 	./$(NAME)
+
+val:
+	valgrind -s ./$(NAME)
+
 clean:
 	rm ft_atoi_base.o test.o
 fclean: clean
