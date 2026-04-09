@@ -3,6 +3,51 @@
 
 int	ft_atoi_base(char *str, char *base);
 
+static char    *itoa(int n, char *str, int base)
+{
+    int     len;
+    int     neg;
+    long    nb;
+
+    len = 0;
+    neg = 0;
+    nb = n;
+    if (nb < 0 && base == 10)
+    {
+        neg = 1;
+        nb = -nb;
+    }
+    if (nb == 0)
+        len = 1;
+    else
+    {
+        long tmp = nb;
+        while (tmp > 0)
+        {
+            tmp /= base;
+            len++;
+        }
+    }
+    if (neg)
+        len++;
+    str[len] = '\0';
+    if (nb == 0)
+        str[0] = '0';
+    else
+    {
+        int i = len - 1;
+        while (nb > 0)
+        {
+            int rem = nb % base;
+            str[i--] = (rem < 10) ? '0' + rem : 'a' + rem - 10;
+            nb /= base;
+        }
+        if (neg)
+            str[0] = '-';
+    }
+    return (str);
+}
+
 int	main(void){
 	char msg[6] = "53";
 	char base_10[11] = "0123456789";
@@ -86,15 +131,15 @@ int	main(void){
 		}
 		cnb[0]++;
 	}
-
 	printf("boucle negative\n");
-	char neg_cnb[3];
-	neg_cnb[2] = 0;
-	memset(neg_cnb, '0', 2);
-	neg_cnb[0] = '-';
-	while (neg_cnb[1] <= '9'){
-		numb = ft_atoi_base(neg_cnb, base_10); printf("numb = %d\n", numb);
-		neg_cnb[1]++;
+	int	neg_nb = 0;
+	char	neg_nb_char[5];
+	int	ret = 0;
+	memset(neg_nb_char, '0', 5);
+	while (neg_nb >= -100){
+		itoa(neg_nb, neg_nb_char, 10);
+		ret = ft_atoi_base(neg_nb_char, base_10); printf("ret = %d\n", ret);
+		neg_nb--;
 	}
 	return 0;
 }
