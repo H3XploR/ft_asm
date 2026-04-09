@@ -141,5 +141,46 @@ int	main(void){
 		ret = ft_atoi_base(neg_nb_char, base_10); printf("ret = %d\n", ret);
 		neg_nb--;
 	}
+
+	printf("test avec un \"moins\" dans la base\n");
+        numb = ft_atoi_base("5", "012345-789"); printf("numb = %d\n\n", numb);
+
+        printf("test avec un \"plus\" dans la base\n");
+        numb = ft_atoi_base("5", "012345+789"); printf("numb = %d\n\n", numb);
+
+        printf("test avec un \"-\" dans la base et dans le nombre\n");
+        numb = ft_atoi_base("-5", "012345-789"); printf("numb = %d\n\n", numb);
+
+        printf("test avec un \"+\" dans la base et dans le nombre\n");
+        numb = ft_atoi_base("+5", "012345+789"); printf("numb = %d\n\n", numb);
+
+        printf("test avec la base qui contient deux fois le meme caractere\n");
+        numb = ft_atoi_base("5", "0123456789"); printf("numb = %d\n\n", numb);
+        numb = ft_atoi_base("5", "01234556789"); printf("numb = %d\n\n", numb);
+
+        printf("test avec la base qui contient un espace\n");
+        numb = ft_atoi_base("5", "01234 6789"); printf("numb = %d\n\n", numb);
+
+        printf("test avec le nombre qui contient un espace\n");
+        numb = ft_atoi_base("5 6", "0123456789"); printf("numb = %d\n\n", numb);
+
+        printf("test avec espaces avant le nombre\n");
+        numb = ft_atoi_base("   56", "0123456789"); printf("numb = %d\n\n", numb);
+
+        printf("test avec tab avant le nombre\n");
+        numb = ft_atoi_base("\t56", "0123456789"); printf("numb = %d\n\n", numb);
+
+        printf("test avec newline avant le nombre\n");
+        numb = ft_atoi_base("\n56", "0123456789"); printf("numb = %d\n\n", numb);
+
+        printf("test base binaire\n");
+        numb = ft_atoi_base("1010", "01"); printf("numb = %d\n\n", numb);
+
+        printf("test base hexadecimale\n");
+        numb = ft_atoi_base("ff", "0123456789abcdef"); printf("numb = %d\n\n", numb);
+        numb = ft_atoi_base("FF", "0123456789ABCDEF"); printf("numb = %d\n\n", numb);
+
+        printf("test base a un seul caractere (invalide)\n");
+        numb = ft_atoi_base("0", "0"); printf("numb = %d\n\n", numb);
 	return 0;
 }

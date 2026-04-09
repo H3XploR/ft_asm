@@ -12,13 +12,16 @@ ft_atoi_base:
 	mov	rdi, rsi	;arg1 = chaine base
 	call	ft_strlen
 	mov	r10, rax	;r10 = longueur chaine base
-	cmp	r10, 0		;if (r10 == 0) goto erreur_chaine_vide
+	xor	r8, r8
+	mov	r8, rax
+	cmp	r10, 1		;if (r10 == 0) goto erreur_chaine_vide
 	dec	r10		;r10 = (longueur chaine base) - 1
-	jz	erreur_chaine_vide
+	jle	erreur_chaine_vide
 	pop	rsi
 	pop	rdi
 	push	rdi		;rdi = arg1
 	push	rsi		;rsi = arg2
+	push	r8
 	call	ft_strlen
 	mov	rcx, rax	;rcx = longueur numero
 	dec	rcx		;rcx = (longueur numero) - 1
@@ -51,10 +54,14 @@ fin_chaine_base:
 	mov rax, 0
 	pop	r14
 	pop	r14
+	pop	r14
 	ret
 char_trouve:
 	imul	r12, r13	;index * pow
-	imul	r13, 10		;pow * 10
+	xor	r8, r8
+	pop	r8
+	imul	r13, r8		;pow * longueur_base
+	push	r8
 	add	r14, r12	;resultat final a renvoyer
 	dec	rcx		;index_nb - 1
 	jmp	loop
@@ -62,10 +69,12 @@ end:
 	mov	rax, r14
 	pop	rdi
 	pop	rsi
+	pop	r14
 	ret
 end_neg:
 	mov	rax, r14
 	pop	rdi
 	pop	rsi
+	pop	r14
 	neg	rax
 	ret
