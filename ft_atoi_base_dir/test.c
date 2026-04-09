@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int	ft_atoi_base(char *str, char *base);
 
@@ -69,7 +70,10 @@ int	main(void){
 	printf("test avec un plus a la fin du numero\n");
 	numb = ft_atoi_base("889+", "0123456789"); printf("numb = %d\n\n", numb);
 
-	char cnb[4] = {'0'};
+	printf("boucle positif\n");
+	char cnb[4];
+	cnb[4] = 0;
+	memset(cnb, '0', 3);
 	while (cnb[0] <= '1'){
 		cnb[1] = '0';
 		while (cnb[1] <= '9'){
@@ -81,6 +85,16 @@ int	main(void){
 			cnb[1]++;
 		}
 		cnb[0]++;
+	}
+
+	printf("boucle negative\n");
+	char neg_cnb[3];
+	neg_cnb[4] = 0;
+	memset(neg_cnb, '0', 2);
+	neg_cnb[0] = '-';
+	while (neg_cnb[1] <= 9){
+		numb = ft_atoi_base(neg_cnb, base_10); printf("numb = %d\n", numb);
+		neg_cnb[1]++;
 	}
 	return 0;
 }
