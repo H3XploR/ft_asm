@@ -31,6 +31,8 @@ loop:
 	mov	byte r11b, [rdi + rcx] ;r11b = *(arg1 + rcx)
 	cmp	r11b, 45
 	je	end_neg
+	cmp	r11b, 43
+	je	end
 	xor	r12, r12	;index_base = 0
 loop_base_search:
 	cmp	r12, r10

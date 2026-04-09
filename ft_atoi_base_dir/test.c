@@ -48,5 +48,26 @@ int	main(void){
 	numb = ft_atoi_base("--", "0123456789"); printf("numb = %d\n\n", numb);
 	numb = ft_atoi_base("---", "0123456789"); printf("numb = %d\n\n", numb);
 	numb = ft_atoi_base("----", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec un \"+\" devant\n");
+	numb = ft_atoi_base("+12", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec plusieurs plus\n");
+	numb = ft_atoi_base("++", "0123456789"); printf("numb = %d\n\n", numb);
+	numb = ft_atoi_base("+++", "0123456789"); printf("numb = %d\n\n", numb);
+	numb = ft_atoi_base("++++", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec plusieurs plus devant\n");
+	numb = ft_atoi_base("++889", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec un plus au milieu du numero\n");
+	numb = ft_atoi_base("8+89", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec un plus au milieu du numero\n");
+	numb = ft_atoi_base("88+9", "0123456789"); printf("numb = %d\n\n", numb);
+
+	printf("test avec un plus a la fin du numero\n");
+	numb = ft_atoi_base("889+", "0123456789"); printf("numb = %d\n\n", numb);
+
 	return 0;
 }
