@@ -29,6 +29,8 @@ loop:
 	cmp	rcx, 0
 	jl	end
 	mov	byte r11b, [rdi + rcx] ;r11b = *(arg1 + rcx)
+	cmp	r11b, 45
+	je	end_neg
 	xor	r12, r12	;index_base = 0
 loop_base_search:
 	cmp	r12, r10
@@ -58,4 +60,10 @@ end:
 	mov	rax, r14
 	pop	rdi
 	pop	rsi
+	ret
+end_neg:
+	mov	rax, r14
+	pop	rdi
+	pop	rsi
+	neg	rax
 	ret
