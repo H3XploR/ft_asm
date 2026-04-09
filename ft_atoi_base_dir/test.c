@@ -69,5 +69,18 @@ int	main(void){
 	printf("test avec un plus a la fin du numero\n");
 	numb = ft_atoi_base("889+", "0123456789"); printf("numb = %d\n\n", numb);
 
+	char cnb[4] = {'0'};
+	while (cnb[0] <= '1'){
+		cnb[1] = '0';
+		while (cnb[1] <= '9'){
+			cnb[2] = '0';
+			while (cnb[2] <= '9'){
+				numb = ft_atoi_base(cnb, base_10); printf("numb = %d\n", numb);
+				cnb[2]++;
+			}
+			cnb[1]++;
+		}
+		cnb[0]++;
+	}
 	return 0;
 }

@@ -5,7 +5,7 @@ $(NAME): test.o ft_atoi_base.o $(DEPENDANCE)
 	gcc test.o ft_atoi_base.o $(DEPENDANCE) -o $(NAME)
 
 test.o: test.c
-	gcc test.c -c 
+	gcc -g test.c -c 
 
 ft_atoi_base.o: ft_atoi_base.s
 	nasm -f elf64 ft_atoi_base.s -o ft_atoi_base.o
