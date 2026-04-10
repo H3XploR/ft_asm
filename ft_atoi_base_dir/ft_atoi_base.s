@@ -17,6 +17,8 @@ ft_atoi_base:
 	cmp	r10, 1		;if (r10 == 0) goto erreur_chaine_vide
 	dec	r10		;r10 = (longueur chaine base) - 1
 	jle	erreur_chaine_vide
+	jmp	check_plus_and_minus
+continue:
 	pop	rsi
 	pop	rdi
 	push	rdi		;rdi = arg1
@@ -50,6 +52,11 @@ erreur_chaine_vide:
 	pop	r14
 	pop	r14
 	ret
+erreur_illegale_char_base:
+	mov	rax, 0
+	pop	r14
+	pop	r14
+	ret
 fin_chaine_base:
 	mov rax, 0
 	pop	r14
@@ -78,3 +85,14 @@ end_neg:
 	pop	r14
 	neg	rax
 	ret
+check_plus_and_minus:
+	mov	r15, r10
+loop_check_plus_and_minus:
+	cmp	byte [rdi + r15], 45
+	je	erreur_illegale_char_base
+	cmp	byte [rdi + r15], 43
+	je	erreur_illegale_char_base
+	dec	r15
+	cmp	r15, 0
+	jl	continue
+	jmp	loop_check_plus_and_minus

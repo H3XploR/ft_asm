@@ -183,5 +183,11 @@ int	main(void){
         printf("test base a un seul caractere (invalide)\n");
         numb = ft_atoi_base("0", "0"); printf("numb = %d\n\n", numb);
         numb = ft_atoi_base("1", "0"); printf("numb = %d\n\n", numb);
+
+        printf("test base qui contient un \'-\' caractere (invalide)\n");
+        numb = ft_atoi_base("5", "012345+789"); printf("numb = %d\n\n", numb);
+
+        printf("test base qui contient un \'+\' caractere (invalide)\n");
+        numb = ft_atoi_base("5", "012345-789"); printf("numb = %d\n\n", numb);
 	return 0;
 }
